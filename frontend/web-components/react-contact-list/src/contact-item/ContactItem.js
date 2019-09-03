@@ -1,18 +1,17 @@
 import React from 'react';
 import { Avatar } from '../avatar/Avatar';
-import './ContactItem.css';
+import styles from './ContactItem.module.css';
 
 export class ContactItem extends React.Component {
-
   handleClick() {
       this.props.onClick && this.props.onClick(this.props.name);
   }
 
   render() {
     return (
-      <div className="contact-item" onClick={() => this.handleClick()}>
+      <div className={styles['contact-item']} onClick={() => this.handleClick()}>
         <Avatar name={this.props.name}/>
-        <span className="name">{this.props.name}</span>
+        <span className={styles['contact-name']}>{this.props.name}</span>
       </div>
     );
   }

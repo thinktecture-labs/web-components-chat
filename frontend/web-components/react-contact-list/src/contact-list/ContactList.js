@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContactItem } from '../contact-item/ContactItem';
-import './ContactList.css';
+import styles from './ContactList.module.css';
 
 export class ContactList extends React.Component {
   selectedContactClicked(name) {
@@ -9,10 +9,10 @@ export class ContactList extends React.Component {
 
   render() {
     return (
-      <div className="contact-list">
-        <header>{this.props.headerText || 'Contact List'}</header>
+      <div>
+        <header className={styles.header}>{this.props.headerText || 'Contact List'}</header>
 
-        <div className="contact-list-list">
+        <div className={styles.list}>
           {(this.props.contacts || []).map((item, index) => <ContactItem name={item} key={index} onClick={name => this.selectedContactClicked(name)}/>)}
         </div>
       </div>
