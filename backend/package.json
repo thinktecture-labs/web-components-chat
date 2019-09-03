@@ -1,0 +1,13 @@
+{
+  "name": "web-components-demo-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
