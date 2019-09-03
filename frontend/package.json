@@ -1,0 +1,17 @@
+{
+  "name": "web-components-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-wc": "npm run build-wc:clean && concurrently \"npm:build-wc:react\"",
+    "build-wc:clean": "rm -rf dist && mkdir dist",
+    "build-wc:react": "cd web-components/react-contact-list && npm run build-wc && cp dist/react-contact-list* ../../dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
