@@ -24,6 +24,7 @@ io.on('connection', socket => {
         socket.userData.username = username;
         socket.join(username);
         io.emit('user-join', {username});
+        socket.emit('all-users', { usernames })
     });
 
     socket.on('disconnect', () => {
