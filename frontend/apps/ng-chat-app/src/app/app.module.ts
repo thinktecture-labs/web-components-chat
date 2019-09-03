@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { RootComponent } from './components/root/root.component';
 import { WebComponentWrappersModule } from './web-component-wrappers/web-component-wrappers.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    RootComponent,
   ],
   imports: [
     BrowserModule,
@@ -15,7 +15,7 @@ import { WebComponentWrappersModule } from './web-component-wrappers/web-compone
     WebComponentWrappersModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [RootComponent],
 })
 export class AppModule {
 }

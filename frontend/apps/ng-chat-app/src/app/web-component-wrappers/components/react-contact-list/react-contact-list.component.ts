@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'chat-react-contact-list',
@@ -6,8 +6,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./react-contact-list.component.scss'],
 })
 export class ReactContactListComponent {
-  sampleNames = ['frido', 'herbert'];
-
-  constructor() {
-  }
+  names = ['user 1', 'user 2'];
 }
