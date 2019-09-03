@@ -1,4 +1,4 @@
-import ReactWebComponent from 'react-web-component';
+import defineElement from './custom-element';
 import { ContactList } from './contact-list/ContactList';
 
-ReactWebComponent.create(<ContactList />, 'react-contact-list');
+defineElement(ContactList, 'react-contact-list');

@@ -5,14 +5,15 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
-    "react-web-component": "^2.0.1"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build-wc": "react-scripts build src/WebComponents.js",
-    "test": "react-scripts test",
+    "start": "cp src/real-index.js src/index.js && react-scripts start",
+    "build": "cp src/real-index.js src/index.js && react-scripts build",
+    "generate-wc": "cp src/WebComponents.js src/index.js && GENERATE_SOURCEMAP=false react-scripts build src/WebComponents.js",
+    "package-wc": "rm -rf dist && mkdir dist && cat build/static/js/{runtime~main.*,*.chunk}.js > dist/react-contact-list.js && cp build/static/css/main.*.css dist/react-contact-list.css",
+    "build-wc": "npm run generate-wc && npm run package-wc",
+    "test": "cp src/real-index.js src/index.js && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,8 +31,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.3",
-    "react-web-component-style-loader": "^0.1.4-alpha"
-  }
+  "devDependencies": {}
 }
