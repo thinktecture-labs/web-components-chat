@@ -1,0 +1,10 @@
+.contact-item {
+    display: flex;
+    font-size: 150%;
+    align-items: center;
+    cursor: pointer;
+}
+
+span {
+    margin-left: 1rem;
+}

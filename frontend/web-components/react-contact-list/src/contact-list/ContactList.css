@@ -1,0 +1,12 @@
+header {
+    font-size: 140%;
+    font-weight: bold;
+
+    margin-bottom: 1rem;
+}
+
+.contact-item + .contact-item {
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid lightgray;
+}
