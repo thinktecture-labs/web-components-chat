@@ -51,7 +51,6 @@ export class Button extends BaseInput {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.element = this.shadowRoot.querySelector('button');
-    this.element.setAttribute('type', 'button');
 
     this.element.addEventListener('click', () => this.dispatchEvent(new CustomEvent('click')));
 
@@ -65,6 +64,19 @@ export class Button extends BaseInput {
         this.element.classList.remove('image-button');
       }
     });
+  }
+
+  set type(value) {
+    this.setAttribute('type', value);
+  }
+
+  get type() {
+    return this.getAttribute('type');
+  }
+
+  render() {
+    super.render();
+    this.element.setAttribute('type', this.type || 'button');
   }
 }
 

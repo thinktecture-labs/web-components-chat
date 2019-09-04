@@ -17,6 +17,10 @@ template.innerHTML = `
         border-color: #38a3e5;
     }
     
+    input:disabled {
+        border-color: #5d6b75;
+    }
+    
     .is-invalid {
         border: 2px solid #fb313b;
     }
