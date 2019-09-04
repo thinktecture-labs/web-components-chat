@@ -1,0 +1,14 @@
+{
+  "name": "native-web-components",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build-wc": "npm run build-wc:clean",
+    "build-wc:clean": "rm -rf dist && mkdir dist",
+    "build-wc:parcel": "parcel build src/text-field.js src/number-field.js --no-source-maps"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}
