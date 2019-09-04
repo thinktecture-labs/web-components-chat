@@ -4,9 +4,9 @@ export class BaseInput extends HTMLElement {
   }
 
   get disabled() {
-    const result = this.getAttribute('disabled') === 'disabled';
+    const result = this.getAttribute('disabled');
 
-    return result ? 'disabled' : false;
+    return result === 1 || result === true || result === 'true' || result === 'disabled' ? 'disabled' : false;
   }
 
   set disabled(value) {
