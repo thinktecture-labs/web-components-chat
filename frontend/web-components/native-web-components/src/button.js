@@ -52,8 +52,6 @@ export class Button extends BaseInput {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.element = this.shadowRoot.querySelector('button');
 
-    this.element.addEventListener('click', () => this.dispatchEvent(new CustomEvent('click')));
-
     const slot = this.shadowRoot.querySelector('slot');
     slot.addEventListener('slotchange', () => {
       const assignedNodes = slot.assignedNodes();
