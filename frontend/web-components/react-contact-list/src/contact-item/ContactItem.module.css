@@ -1,6 +1,6 @@
 .contact-item {
     display: flex;
-    font-size: 150%;
+    font-size: 16pt;
     align-items: center;
     cursor: pointer;
 }
