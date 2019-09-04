@@ -7,6 +7,8 @@ template.innerHTML = `<style>
         font-size: 16pt;
         border: 2px solid #08e375;
         background-color: white;
+        border-radius: 1000px;
+        padding: 0.25rem 1rem;
     }
     
     button:disabled {
@@ -26,10 +28,15 @@ template.innerHTML = `<style>
 
     button.image-button {
         border-radius: 50%;
+        padding: 1px 7px 2px;
     }
     
     button:disabled ::slotted(img) {
         filter: grayscale(100%);
+    }
+    
+    button:focus {
+        outline: none;
     }
 </style>
 

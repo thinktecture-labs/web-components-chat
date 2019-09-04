@@ -7,7 +7,14 @@ template.innerHTML = `
     input {
         width: 100%;
         font-size: 16pt;
-        padding: 0.25rem;
+        padding: 0.25rem 1rem;
+        border: 2px solid #08e375;
+        border-radius: 1000px;
+    }
+    
+    input:active:not(:disabled), input:focus:not(:disabled) {
+        outline: none;
+        border-color: #38a3e5;
     }
     
     .is-invalid {
