@@ -1,0 +1,24 @@
+{
+  "name": "vue-login",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "wc": "npm run wc:clean && npm run wc:copy",
+    "wc:clean": "rm -rf src/assets/web-components && mkdir src/assets/web-components",
+    "wc:copy": "cp ../../dist/native-web-components-*.js src/assets/web-components",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "typescript": "^3.4.3",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
