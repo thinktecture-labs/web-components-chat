@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-wc": "npm run build-wc:clean && concurrently \"npm:build-wc:react\"",
+    "build-wc": "npm run build-wc:clean && concurrently \"npm:build-wc:react\" && concurrently \"npm:build-wc:native\"",
     "build-wc:clean": "rm -rf dist && mkdir dist",
-    "build-wc:react": "cd web-components/react-contact-list && npm run build-wc && cp dist/react-contact-list* ../../dist"
+    "build-wc:react": "cd web-components/react-contact-list && npm run build-wc && cp dist/react-contact-list* ../../dist",
+    "build-wc:native": "cd web-components/native-web-components && npm run build-wc && cp dist/native-web-components-*.js ../../dist"
   },
   "keywords": [],
   "author": "",

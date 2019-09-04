@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel src/index.html",
-    "build-wc": "npm run build-wc:clean",
+    "build-wc": "npm run build-wc:clean && npm run build-wc:parcel",
     "build-wc:clean": "rm -rf dist && mkdir dist",
-    "build-wc:parcel": "parcel build src/text-field.js src/number-field.js --no-source-maps"
+    "build-wc:parcel": "concurrently \"npm:build-wc:parcel:text-field\" \"npm:build-wc:parcel:number-field\" \"npm:build-wc:parcel:button\"",
+    "build-wc:parcel:text-field": "parcel build src/text-field.js --no-source-maps --out-file native-web-components-text-field.js",
+    "build-wc:parcel:number-field": "parcel build src/number-field.js --no-source-maps --out-file native-web-components-number-field.js",
+    "build-wc:parcel:button": "parcel build src/button.js --no-source-maps --out-file native-web-components-button.js"
   },
   "dependencies": {},
   "devDependencies": {
+    "concurrently": "^4.1.2",
     "parcel-bundler": "^1.12.3"
   }
 }
