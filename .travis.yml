@@ -1,0 +1,16 @@
+sudo: required
+language: node_js
+node_js:
+    - 12
+
+services:
+  - docker
+
+script:
+  - bash docker-build-all.sh
+
+deploy:
+  provider: script
+  script: bash docker-push-all.sh
+  on:
+    branch: master
