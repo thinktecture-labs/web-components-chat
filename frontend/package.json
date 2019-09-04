@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-wc": "npm run build-wc:clean && concurrently \"npm:build-wc:react\" && concurrently \"npm:build-wc:native\"",
+    "build-wc": "npm run build-wc:clean && concurrently \"npm:build-wc:react\" && concurrently \"npm:build-wc:native\" && concurrently \"npm:build-wc:vue\"",
     "build-wc:clean": "rm -rf dist && mkdir dist",
     "build-wc:react": "cd web-components/react-contact-list && npm run build-wc && cp dist/react-contact-list* ../../dist",
-    "build-wc:native": "cd web-components/native-web-components && npm run build-wc && cp dist/native-web-components-*.js ../../dist"
+    "build-wc:native": "cd web-components/native-web-components && npm run build-wc && cp dist/native-web-components-*.js ../../dist",
+    "build-wc:vue": "cd web-components/vue-login && npm run build-wc && cp dist/vue-login.js ../../dist/vue-login.js"
   },
   "keywords": [],
   "author": "",
