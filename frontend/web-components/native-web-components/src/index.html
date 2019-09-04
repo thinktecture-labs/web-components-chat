@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <script src="text-field.js"></script>
     <script src="number-field.js"></script>
     <script src="button.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16pt;
+        }
+    </style>
 </head>
 <body>
 <div>Text Field</div>
@@ -15,6 +23,9 @@
 <native-web-component-number-field isInvalid="true" placeholder="Sample"></native-web-component-number-field>
 
 <div>Button</div>
-<native-web-component-button disabled="disabled">Shit</native-web-component-button>
+<native-web-component-button disabled="disabled">Disabled</native-web-component-button>
+<native-web-component-button>Enabled</native-web-component-button>
+<native-web-component-button><img src="https://robohash.org/sample.png?size=50x50"></native-web-component-button>
+<native-web-component-button disabled="disabled"><img src="https://robohash.org/sample.png?size=50x50"></native-web-component-button>
 </body>
 </html>

@@ -2,13 +2,16 @@ import { BaseInput } from './base-input';
 
 const template = document.createElement('template');
 
-template.innerHTML = `<style>
+template.innerHTML = `
+<style>
     input {
         width: 100%;
+        font-size: 16pt;
+        padding: 0.25rem;
     }
     
     .is-invalid {
-        border: 1px solid crimson;
+        border: 2px solid #fb313b;
     }
 </style>
 
