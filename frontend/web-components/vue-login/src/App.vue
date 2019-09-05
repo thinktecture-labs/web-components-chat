@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <LoginForm></LoginForm>
+        <LoginForm @submit="username => this.submit(username)"></LoginForm>
     </div>
 </template>
 
@@ -14,6 +14,9 @@
         },
     })
     export default class App extends Vue {
+        public submit(username: string) {
+            console.log(username);
+        }
     }
 </script>
 

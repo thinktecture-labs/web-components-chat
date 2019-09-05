@@ -4,7 +4,9 @@
         <div>
             <native-web-component-text-field @valueChange="loginName = $event.target.value"
                                              :isInvalid="isInvalid"
-                                             :placeholder="loginPlaceholder"></native-web-component-text-field>
+                                             :placeholder="loginPlaceholder"
+                                             v-on:keydown.enter="submit"
+            ></native-web-component-text-field>
             <!-- We need to submit ourselves, since we don't have form associated elements yet: https://github.com/w3c/webcomponents/issues/814 -->
             <native-web-component-button type="button" @click="submit" :disabled="isInvalid || isPristine">{{
                 loginButtonText }}
