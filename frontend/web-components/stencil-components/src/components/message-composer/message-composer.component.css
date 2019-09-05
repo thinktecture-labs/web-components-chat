@@ -1,0 +1,12 @@
+form {
+  display: flex;
+  width: 100%;
+}
+
+native-web-component-text-field {
+  flex: 1;
+}
+
+native-web-component-button {
+  margin-left: 3rem;
+}

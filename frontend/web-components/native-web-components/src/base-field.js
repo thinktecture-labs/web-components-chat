@@ -85,7 +85,7 @@ export class BaseField extends BaseInput {
 
     this.element.setAttribute('type', this.inputType);
     this.element.setAttribute('placeholder', this.placeholder || '');
-    this.element.setAttribute('value', this.value || '');
+    this.element.value = this.value || '';
 
     if (this.isInvalid) {
       this.element.classList.add('is-invalid');
