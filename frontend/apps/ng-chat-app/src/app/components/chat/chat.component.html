@@ -1,1 +1,5 @@
-<chat-angular-chat-window></chat-angular-chat-window>
+<ng-container *ngIf="username$ | async as username">
+  <header>Chat with {{ username }}</header>
+  <chat-angular-chat-window></chat-angular-chat-window>
+  <chat-stencil-message-composer (messageComposed)="sendMessage($event)"></chat-stencil-message-composer>
+</ng-container>

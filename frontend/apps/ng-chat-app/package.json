@@ -5,7 +5,7 @@
     "ng": "ng",
     "wc": "npm run wc:clean && npm run wc:copy",
     "wc:clean": "rm -rf src/assets/web-components && mkdir src/assets/web-components",
-    "wc:copy": "cp ../../dist/* src/assets/web-components",
+    "wc:copy": "cp -r ../../dist/* src/assets/web-components",
     "start": "ng serve",
     "build": "ng build",
     "build-prod": "ng build --prod",

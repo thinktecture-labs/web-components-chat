@@ -8,8 +8,7 @@ import { Component, ComponentDidLoad, Event, EventEmitter, h, Listen, State } fr
 export class MessageComposerComponent implements ComponentDidLoad {
   @Event() messageComposed: EventEmitter<string>;
   @State() value: string;
-  @State() isInvalid: boolean;
-  isPristine: boolean = true;
+  @State() isInvalid: boolean = true;
 
   private textFieldElement: HTMLInputElement;
 
@@ -21,7 +20,6 @@ export class MessageComposerComponent implements ComponentDidLoad {
     this.messageComposed.emit(this.value);
     this.value = '';
     this.isInvalid = true;
-    this.isPristine = true;
 
     if (event) {
       event.preventDefault();
@@ -38,16 +36,15 @@ export class MessageComposerComponent implements ComponentDidLoad {
   componentDidLoad() {
     // TODO: Can we use JSX for that?
     this.textFieldElement.addEventListener('valueChange', (event: CustomEvent) => {
-      this.isPristine = false;
       this.value = event.detail;
       this.isInvalid = !this.value;
     });
   }
 
   render() {
-    return <form onSubmit={event => this.messageComposedHandler(event)}>
+    return <form>
       <native-web-component-text-field value={this.value} ref={e => this.textFieldElement = e}/>
-      <native-web-component-button onClick={() => this.messageComposedHandler()} disabled={this.isInvalid || this.isPristine}>
+      <native-web-component-button onClick={() => this.messageComposedHandler()} disabled={this.isInvalid}>
         <slot name="button">Send</slot>
       </native-web-component-button>
     </form>;

@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  font-weight: bold;
+  font-size: 30pt;
+}
+
+chat-stencil-message-composer {
+  margin-top: 2rem;
+}
