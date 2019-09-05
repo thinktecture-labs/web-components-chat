@@ -10,12 +10,12 @@ io.on('connection', socket => {
 
   socket.userData = socket.userData || {};
 
-  socket.on('online', username => {
+  socket.on('register', (username, fn) => {
     console.log('socket sent online event with username', username);
 
     if (usernames.has(username)) {
       console.log('user', username, 'already exists, disconnecting...');
-      socket.emit('user-name-exists');
+      fn(false);
       socket.disconnect(0);
       return;
     }
@@ -25,6 +25,7 @@ io.on('connection', socket => {
     socket.join('online');
     socket.to('online').emit('user-join', { username });
     socket.emit('all-users', { usernames: Array.from(usernames.keys()) });
+    fn(true);
   });
 
   socket.on('disconnect', () => {
