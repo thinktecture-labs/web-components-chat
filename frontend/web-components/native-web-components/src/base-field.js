@@ -39,7 +39,7 @@ export class BaseField extends BaseInput {
 
     this.element.addEventListener('input', () => {
       this.value = this.element.value;
-      this.dispatchEvent(new CustomEvent('valueChange', { value: this.element.value }));
+      this.dispatchEvent(new CustomEvent('valueChange', { detail: this.element.value }));
     });
   }
 
