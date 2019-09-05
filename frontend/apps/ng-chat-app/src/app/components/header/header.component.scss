@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  height: 60px;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  height: 100%;
+}
+
+chat-online-state-icon {
+  position: absolute;
+  right: 2rem;
+  height: 60px;
+}
