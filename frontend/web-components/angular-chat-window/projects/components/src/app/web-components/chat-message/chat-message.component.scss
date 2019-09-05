@@ -1,0 +1,22 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background: rgb(8,227,117);
+  background: linear-gradient(90deg, rgba(8,227,117,0.7) 70%, rgba(56,163,229,0.7) 110%);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 16pt;
+}
+
+:host-context(.is-sent) {
+  background: linear-gradient(-90deg, rgba(8,227,117,0.7) 70%, rgba(56,163,229,0.7) 110%);
+}
+
+.timestamp {
+  margin-top: 0.5rem;
+  margin-left: auto;
+  color: $white;
+  font-size: 12pt;
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+:host {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+app-chat-message {
+  &.is-sent {
+    margin-left: auto;
+  }
+
+  max-width: 40%;
+
+  + app-chat-message {
+    margin-top: 1rem;
+  }
+}
