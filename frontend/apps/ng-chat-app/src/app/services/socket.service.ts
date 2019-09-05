@@ -19,23 +19,30 @@ export class SocketService implements OnDestroy {
   state$ = this.stateSubject.asObservable();
 
   private socket: Socket;
+  private isInitialized: boolean;
 
   constructor() {
     this.socket = socketIo(environment.backendUrl);
   }
 
   connect(): void {
-    this.disconnect();
+    if (this.socket.connected) {
+      return;
+    }
 
     this.stateSubject.next(SocketState.Connecting);
-    this.socket.on('connect', () => this.stateSubject.next(SocketState.Connected));
-    this.socket.on('reconnect', () => this.stateSubject.next(SocketState.Connected));
-    this.socket.on('connect_error', e => this.stateSubject.next(SocketState.Disconnected));
-    this.socket.on('connect_timeout', e => this.stateSubject.next(SocketState.Disconnected));
-    this.socket.on('disconnect', e => this.stateSubject.next(SocketState.Disconnected));
-    this.socket.on('reconnecting', e => this.stateSubject.next(SocketState.Connecting));
-    this.socket.on('reconnect_error', e => this.stateSubject.next(SocketState.Connecting));
-    this.socket.on('reconnect_failed', e => this.stateSubject.next(SocketState.Disconnected));
+
+    if (!this.isInitialized) {
+      this.socket.on('connect', () => this.stateSubject.next(SocketState.Connected));
+      this.socket.on('reconnect', () => this.stateSubject.next(SocketState.Connected));
+      this.socket.on('connect_error', e => this.stateSubject.next(SocketState.Disconnected));
+      this.socket.on('connect_timeout', e => this.stateSubject.next(SocketState.Disconnected));
+      this.socket.on('disconnect', e => this.stateSubject.next(SocketState.Disconnected));
+      this.socket.on('reconnecting', e => this.stateSubject.next(SocketState.Connecting));
+      this.socket.on('reconnect_error', e => this.stateSubject.next(SocketState.Connecting));
+      this.socket.on('reconnect_failed', e => this.stateSubject.next(SocketState.Disconnected));
+      this.isInitialized = true;
+    }
 
     this.socket.connect();
   }
@@ -46,6 +53,10 @@ export class SocketService implements OnDestroy {
 
       return () => this.socket.removeListener(name);
     }).pipe(share());
+  }
+
+  send(event: string, ...payloadAndAck: any[]): void {
+    this.socket.emit(event, ...payloadAndAck);
   }
 
   disconnect() {

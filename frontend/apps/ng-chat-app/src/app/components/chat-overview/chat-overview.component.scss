@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+}
+
+chat-react-contact-list {
+  flex: 1;
+}
+
+.chat {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

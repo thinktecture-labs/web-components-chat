@@ -1,0 +1,14 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error {
+  margin-top: 1rem;
+  color: $red;
+}

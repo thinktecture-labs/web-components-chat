@@ -2,7 +2,7 @@
     <form @submit="submit">
         <header>{{ loginHeaderText }}</header>
         <div>
-            <native-web-component-text-field :value="loginName" @valueChange="loginName = $event.target.value"
+            <native-web-component-text-field @valueChange="loginName = $event.target.value"
                                              :isInvalid="isInvalid"
                                              :placeholder="loginPlaceholder"></native-web-component-text-field>
             <!-- We need to submit ourselves, since we don't have form associated elements yet: https://github.com/w3c/webcomponents/issues/814 -->
@@ -44,7 +44,7 @@
                 return;
             }
 
-            this.$emit('submit', { name: this.loginName });
+            this.$emit('submit', { name: this._loginName });
 
             e.preventDefault();
         }
