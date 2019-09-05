@@ -21,7 +21,7 @@ export class VueLoginComponent {
 
     this.error = false;
     this.securityService.login(username).subscribe(
-      () => this.router.navigate(['/chat-overview']),
+      () => this.router.navigate(['/chat']),
       () => this.error = true,
     );
   }

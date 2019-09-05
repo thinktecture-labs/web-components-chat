@@ -12,6 +12,11 @@
 
 img {
   height: 100%;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 chat-online-state-icon {

@@ -1,3 +1,5 @@
+@import 'variables';
+
 :host {
   display: flex;
 }
@@ -11,4 +13,8 @@ chat-react-contact-list {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-left: 1px solid $blue;
+  margin-left: 1rem;
+  padding-left: 1rem;
 }

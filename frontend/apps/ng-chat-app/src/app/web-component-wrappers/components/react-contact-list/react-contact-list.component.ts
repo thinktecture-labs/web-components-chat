@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'chat-react-contact-list',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./react-contact-list.component.scss'],
 })
 export class ReactContactListComponent {
-  names = ['user 1', 'user 2'];
+  @Input() names: string[] = ['user1'];
+  @Output() contactClick = new EventEmitter<string>();
 }

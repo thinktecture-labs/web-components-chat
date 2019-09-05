@@ -9,10 +9,10 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'chat-overview',
+    redirectTo: 'chat',
   },
   {
-    path: 'chat-overview',
+    path: 'chat',
     component: ChatOverviewComponent,
     // canActivate: [IsAuthenticatedGuard],
     children: [
