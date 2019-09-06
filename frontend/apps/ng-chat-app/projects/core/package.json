@@ -1,0 +1,10 @@
+{
+  "name": "core",
+  "version": "0.0.1",
+  "main": "./src/public-api.ts",
+  "typings": "./src/public-api.ts",
+  "peerDependencies": {
+    "rxjs": "~6.4.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

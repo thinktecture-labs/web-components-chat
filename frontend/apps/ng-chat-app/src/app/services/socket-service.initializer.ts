@@ -1,4 +1,4 @@
-import { SocketService } from './socket.service';
+import { SocketService } from '@wc-demo/core';
 
 export function socketServiceInitializerFactory(socketService: SocketService): () => boolean {
   return () => {

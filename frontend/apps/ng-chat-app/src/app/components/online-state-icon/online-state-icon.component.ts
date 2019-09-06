@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faWifi } from '@fortawesome/free-solid-svg-icons';
+import { SocketService, SocketState } from '@wc-demo/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SocketService, SocketState } from '../../services/socket.service';
 
 @Component({
   selector: 'chat-online-state-icon',

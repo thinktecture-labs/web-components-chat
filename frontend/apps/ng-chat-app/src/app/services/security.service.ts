@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { SocketService } from '@wc-demo/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SocketService } from './socket.service';
 
 @Injectable({
   providedIn: 'root',
