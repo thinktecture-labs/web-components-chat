@@ -7,6 +7,8 @@
 <script lang="ts">
     import LoginForm from './components/LoginForm.vue';
     import { Component, Vue } from 'vue-property-decorator';
+    import '../assets/web-components/native-web-components-button';
+    import '../assets/web-components/native-web-components-text-field';
 
     @Component({
         components: {

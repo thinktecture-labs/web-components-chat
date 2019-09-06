@@ -17,8 +17,6 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import '../assets/web-components/native-web-components-button';
-    import '../assets/web-components/native-web-components-text-field';
 
     @Component
     export default class LoginForm extends Vue {
