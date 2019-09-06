@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatOverviewComponent } from './components/chat-overview/chat-overview.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NoChatSelectedComponent } from './components/no-chat-selected/no-chat-selected.component';
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { VueLoginComponent } from './web-component-wrappers/components/vue-login/vue-login.component';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatOverviewComponent,
-    // canActivate: [IsAuthenticatedGuard],
+    canActivate: [IsAuthenticatedGuard],
     children: [
       {
         path: '',

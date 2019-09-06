@@ -9,7 +9,7 @@ export class TimestampFormatPipe implements PipeTransform {
   }
 
   transform(value: number): string {
-    return this.dateTimeService.fromTimestamp(value).toFormat('hh:mm');
+    return this.dateTimeService.fromTimestamp(value).toFormat('HH:mm');
   }
 
 }

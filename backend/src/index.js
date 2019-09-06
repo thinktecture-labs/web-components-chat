@@ -15,7 +15,7 @@ io.on('connection', socket => {
 
     if (usernames.has(username)) {
       console.log('user', username, 'already exists, disconnecting...');
-      fn(false);
+      fn(true);
       socket.disconnect(0);
       return;
     }
@@ -25,7 +25,29 @@ io.on('connection', socket => {
     socket.join('online');
     socket.to('online').emit('user-join', { username });
     socket.emit('all-users', { usernames: Array.from(usernames.keys()) });
-    fn(true);
+    fn(false);
+  });
+
+  socket.on('private-message', (messageObj, fn) => {
+    console.log('received private message', JSON.stringify(messageObj));
+
+    const { to, message } = messageObj;
+
+    if (!usernames.has(to)) {
+      fn('user not found');
+      return;
+    }
+
+    const socketIdToSendTo = usernames.get(to);
+
+    const timestamp = Date.now();
+    io.to(socketIdToSendTo).emit('private-message', {
+      message,
+      from: socket.userData.username,
+      timestamp,
+    });
+
+    fn(timestamp);
   });
 
   socket.on('disconnect', () => {

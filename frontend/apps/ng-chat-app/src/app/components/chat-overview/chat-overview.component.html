@@ -1,4 +1,4 @@
-<chat-react-contact-list (contactClick)="selectContact($event)"></chat-react-contact-list>
+<chat-react-contact-list (contactClick)="selectContact($event)" [names]="users$ | async"></chat-react-contact-list>
 <div class="chat">
   <router-outlet></router-outlet>
 </div>
