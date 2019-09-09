@@ -33,8 +33,9 @@ export class VueLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!environment.production && localStorage.getItem('bypass-login') === 'yes') {
-      this.submit({ detail: [{ name: 'test-user' }] } as CustomEvent);
+    const name = localStorage.getItem('bypass-login');
+    if (!environment.production && name) {
+      this.submit({ detail: [{ name }] } as CustomEvent);
     }
   }
 }

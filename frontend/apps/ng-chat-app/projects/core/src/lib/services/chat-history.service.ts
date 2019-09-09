@@ -27,7 +27,6 @@ export class ChatHistoryService extends Dexie {
   }
 
   addHistory$(user: string, message: Message): Observable<void> {
-    console.log('adding history');
     return defer(() => from(this.history.add({ ...message, user })))
       .pipe(mapTo(undefined));
   }

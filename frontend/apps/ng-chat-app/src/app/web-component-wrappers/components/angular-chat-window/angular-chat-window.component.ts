@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Message } from '@wc-demo/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'chat-angular-chat-window',
@@ -8,4 +9,6 @@ import { Message } from '@wc-demo/core';
 })
 export class AngularChatWindowComponent {
   @Input() messages: Message[] = [];
+
+  apiEndpoint: string = `${environment.backendUrl}/api/link-preview`;
 }

@@ -8,6 +8,7 @@ import { Message } from '../models/message';
 })
 export class ChatWindowComponent {
   @Input() messages: Message[];
+  @Input() apiEndpoint: string;
   @Output() messageClick = new EventEmitter<Message>();
 
   trackByTimestamp(): TrackByFunction<Message> {

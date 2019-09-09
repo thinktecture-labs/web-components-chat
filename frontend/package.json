@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-wc": "npm run build-wc:clean && npm run build-wc:native && concurrently \"npm:build-wc:react\" \"npm:build-wc:vue\" \"npm:build-wc:angular\" \"npm:build-wc:stencil\" \"npm:build-wc:lit-element\"",
+    "build-wc": "npm run build-wc:clean && npm run build-wc:native && npm run build-wc:lit-element && concurrently \"npm:build-wc:react\" \"npm:build-wc:vue\" \"npm:build-wc:angular\" \"npm:build-wc:stencil\"",
     "build-wc:clean": "rm -rf dist && mkdir dist",
     "build-wc:react": "cd web-components/react-contact-list && npm run build-wc && cp dist/react-contact-list* ../../dist",
     "build-wc:native": "cd web-components/native-web-components && npm run build-wc && cp dist/native-web-components-*.js ../../dist",

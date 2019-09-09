@@ -1,6 +1,7 @@
 const request = require('request');
 
 function requestSource(link) {
+  console.log('requesting source for', link);
   return new Promise((resolve, reject) => {
     request(link, (err, _, body) => {
       if (err) {
@@ -51,7 +52,19 @@ function extractMetadata(link, source) {
   };
 }
 
+const requestCache = {};
+
 module.exports = (link) => {
-  return requestSource(link)
-    .then(source => extractMetadata(link, source));
+  const cacheItem = requestCache[link];
+
+  if (cacheItem instanceof Promise) {
+    return cacheItem;
+  }
+
+  if (requestCache[link]) {
+    return Promise.resolve(requestCache[link]);
+  }
+
+  return requestCache[link] = requestSource(link)
+    .then(source => requestCache[link] = extractMetadata(link, source));
 };

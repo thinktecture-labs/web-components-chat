@@ -7,6 +7,5 @@ export function generatePreview(apiEndpoint, link) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ link }),
-  })
-    .then(webResult => webResult.json());
+  }).then(webResult => webResult.json());
 }

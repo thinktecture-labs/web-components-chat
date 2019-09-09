@@ -4,8 +4,8 @@ import { generatePreview } from './preview-link';
 class ChatLink extends LitElement {
   static get properties() {
     return {
-      link: { type: String },
-      apiEndpoint: { type: String, attribute: 'api-endpoint' },
+      url: { type: String, reflect: true },
+      apiEndpoint: { type: String, attribute: 'api-endpoint', reflect: true },
     };
   }
 
@@ -40,41 +40,33 @@ class ChatLink extends LitElement {
   constructor() {
     super();
 
-    this._link = this.link = '';
-    this._apiEndpoint = this.apiEndpoint = '';
+    this.url = '';
+    this.apiEndpoint = '';
     this.preview = null;
     this.isLoading = false;
   }
 
-  set link(value) {
-    this._link = value;
+  attributeChangedCallback(name, old, value) {
+    super.attributeChangedCallback(name, old, value);
 
-    this.updatePreview();
-  }
-
-  get link() {
-    return this._link;
-  }
-
-  set apiEndpoint(value) {
-    this._apiEndpoint = value;
-
-    this.updatePreview();
-  }
-
-  get apiEndpoint() {
-    return this._apiEndpoint;
+    if (this.url && this.apiEndpoint) {
+      this.updatePreview();
+    }
   }
 
   updatePreview() {
-    if (!this.apiEndpoint || !this.link) {
+    if (!this.apiEndpoint || !this.url) {
       this.isLoading = false;
+      return;
+    }
+
+    if (this.isLoading) {
       return;
     }
 
     this.isLoading = true;
 
-    generatePreview(this.apiEndpoint, this.link).then(
+    generatePreview(this.apiEndpoint, this.url).then(
       result => {
         this.isLoading = false;
         this.preview = result;

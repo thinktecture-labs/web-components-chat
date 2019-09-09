@@ -1,2 +1,0 @@
-<app-chat-message *ngFor="let message of messages; trackBy:trackByTimestamp"
-                  [message]="message" [class.is-sent]="message.isSent" (click)="messageClick.next(message)"></app-chat-message>
