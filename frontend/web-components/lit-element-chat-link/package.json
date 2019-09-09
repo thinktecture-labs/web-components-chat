@@ -1,0 +1,20 @@
+{
+  "name": "lit-element-chat-link",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run serve | npm run watch",
+    "serve": "polymer serve --port 8082",
+    "watch": "browser-sync start --proxy localhost:8082 --files \"src/**/*.*\"",
+    "build-wc": "npm run build-wc:clean && webpack-cli",
+    "build-wc:clean": "rm -rf dist && mkdir dist"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "polymer-cli": "^1.9.11",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  }
+}
