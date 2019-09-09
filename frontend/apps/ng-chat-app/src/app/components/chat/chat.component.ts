@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService, Message } from '@wc-demo/core';
 import { from, Observable } from 'rxjs';
-import { map, scan, startWith, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, scan, switchMap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'chat-chat',
