@@ -10,5 +10,5 @@ import { environment } from '../../../../environments/environment';
 export class AngularChatWindowComponent {
   @Input() messages: Message[] = [];
 
-  apiEndpoint: string = `${environment.backendUrl}/api/link-preview`;
+  apiEndpoint = `${environment.backendUrl}/api/link-preview`;
 }

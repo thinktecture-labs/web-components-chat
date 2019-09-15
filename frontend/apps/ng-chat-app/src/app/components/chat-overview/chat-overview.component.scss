@@ -2,6 +2,7 @@
 
 :host {
   display: flex;
+  flex: 1;
 }
 
 chat-react-contact-list {
@@ -11,7 +12,7 @@ chat-react-contact-list {
 .chat {
   flex: 3;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   border-left: 1px solid $blue;

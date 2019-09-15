@@ -1,6 +1,8 @@
 :host {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  height: 100%;
 }
 
 header {
@@ -9,5 +11,5 @@ header {
 }
 
 chat-stencil-message-composer {
-  margin-top: 2rem;
+  margin-top: auto;
 }
