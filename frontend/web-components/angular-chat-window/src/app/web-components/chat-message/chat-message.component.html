@@ -4,4 +4,4 @@
 <div class="timestamp">
   {{ message.timestamp | timestampFormat }}
 </div>
-<lit-element-chat-link *ngIf="link" [url]="link" [apiEndpoint]="apiEndpoint"></lit-element-chat-link>
+<lit-element-chat-link *ngIf="link" [url]="link" [apiEndpoint]="apiEndpoint" [class.debug]="debug"></lit-element-chat-link>

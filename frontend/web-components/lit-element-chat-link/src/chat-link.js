@@ -15,25 +15,25 @@ class ChatLink extends LitElement {
         :host {
             display: flex;
         }
-        
+
         .preview img {
             max-height: 120px;
             margin-right: 1rem;
         }
-        
+
         .preview {
             cursor: pointer;
             display: flex;
         }
-      
+
         .preview div header {
             font-size: 18pt;
             font-weight: bold;
         }
-      
+
         .preview div p {
             font-size: 16pt;
-        } 
+        }
     `;
   }
 
@@ -44,6 +44,7 @@ class ChatLink extends LitElement {
     this.apiEndpoint = '';
     this.preview = null;
     this.isLoading = false;
+    this.lastGeneratedPreviewUrl = '';
   }
 
   attributeChangedCallback(name, old, value) {
@@ -60,11 +61,12 @@ class ChatLink extends LitElement {
       return;
     }
 
-    if (this.isLoading) {
+    if (this.isLoading || this.lastGeneratedPreviewUrl === this.url) {
       return;
     }
 
     this.isLoading = true;
+    this.lastGeneratedPreviewUrl = this.url;
 
     generatePreview(this.apiEndpoint, this.url).then(
       result => {
@@ -82,7 +84,7 @@ class ChatLink extends LitElement {
 
   // TODO: This is not translatable yet
   get noPreviewAvailableTemplate() {
-    return html `<div>No Preview available</div>`;
+    return html`<div>No Preview available</div>`;
   }
 
   get isLoadingPreviewTemplate() {

@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 form {
   display: flex;
   width: 100%;

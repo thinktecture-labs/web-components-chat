@@ -39,6 +39,26 @@
             this.isInvalid = !value;
         }
 
+        public mounted() {
+            let border, margin, padding;
+            // Debug
+            window.addEventListener('message', event => {
+                if (event.data) {
+                    if (event.data.expose) {
+                        border = (this.$el as HTMLElement).style.border;
+                        margin = (this.$el as HTMLElement).style.margin;
+                        padding = (this.$el as HTMLElement).style.padding;
+                        (this.$el as HTMLElement).style.border = '5px dashed green';
+                        (this.$el as HTMLElement).style.margin = (this.$el as HTMLElement).style.padding = '0.5rem';
+                    } else {
+                        (this.$el as HTMLElement).style.border = border;
+                        (this.$el as HTMLElement).style.margin = margin;
+                        (this.$el as HTMLElement).style.padding = padding;
+                    }
+                }
+            });
+        }
+
         public submit(e: Event) {
             if (this.isInvalid) {
                 return;

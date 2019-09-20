@@ -1,8 +1,16 @@
-import { BaseInput } from './base-input';
+import { BaseInput } from './base-input.js';
 
 const template = document.createElement('template');
 
 template.innerHTML = `<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    :host {
+        display: block;
+    }
+
     button {
         font-size: 16pt;
         border: 2px solid #08e375;

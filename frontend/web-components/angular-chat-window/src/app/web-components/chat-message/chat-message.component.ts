@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Message } from '../models/message';
 
 const linkRegEx = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
@@ -7,9 +7,11 @@ const linkRegEx = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html',
   styleUrls: ['./chat-message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatMessageComponent {
   @Input() apiEndpoint: string;
+  @Input() debug: boolean;
   link: string;
   // tslint:disable-next-line:variable-name
   private _message: Message;

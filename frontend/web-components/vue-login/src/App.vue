@@ -1,14 +1,15 @@
 <template>
     <div id="app">
         <LoginForm @submit="username => this.submit(username)"></LoginForm>
+        Submited username: {{ username }}
     </div>
 </template>
 
 <script lang="ts">
     import LoginForm from './components/LoginForm.vue';
     import { Component, Vue } from 'vue-property-decorator';
-    import '../assets/web-components/native-web-components-button';
-    import '../assets/web-components/native-web-components-text-field';
+    import './assets/web-components/native-web-components-button';
+    import './assets/web-components/native-web-components-text-field';
 
     @Component({
         components: {
@@ -16,8 +17,10 @@
         },
     })
     export default class App extends Vue {
+        public username: string = '';
+
         public submit(username: string) {
-            console.log(username);
+            this.username = username;
         }
     }
 </script>

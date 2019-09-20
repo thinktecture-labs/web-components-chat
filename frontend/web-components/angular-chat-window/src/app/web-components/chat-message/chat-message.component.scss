@@ -26,4 +26,10 @@ lit-element-chat-link {
   margin-top: 0.5rem;
   background-color: rgba($blue, 0.3);
   border-radius: 10px;
+
+  &.debug {
+    border: 5px dashed brown;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
 }

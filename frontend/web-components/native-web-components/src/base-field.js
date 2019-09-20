@@ -1,9 +1,17 @@
-import { BaseInput } from './base-input';
+import { BaseInput } from './base-input.js';
 
 const template = document.createElement('template');
 
 template.innerHTML = `
 <style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    :host {
+        display: block;
+    }
+
     input {
         width: 100%;
         font-size: 16pt;
@@ -44,7 +52,7 @@ export class BaseField extends BaseInput {
   }
 
   static get observedAttributes() {
-    return [ 'placeholder', 'value' , 'required'];
+    return [ 'placeholder', 'value', 'required' ];
   }
 
   get placeholder() {
@@ -89,8 +97,7 @@ export class BaseField extends BaseInput {
 
     if (this.isInvalid) {
       this.element.classList.add('is-invalid');
-    }
-    else {
+    } else {
       this.element.classList.remove('is-invalid');
     }
   }

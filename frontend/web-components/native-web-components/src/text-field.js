@@ -1,4 +1,4 @@
-import { BaseField } from './base-field';
+import { BaseField } from './base-field.js';
 
 class TextField extends BaseField {
   constructor() {
