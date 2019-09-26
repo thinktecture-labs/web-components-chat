@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatHistoryService, ChatService, SecurityService } from '@wc-demo/core';
 import { from, Observable } from 'rxjs';
-import { distinctUntilChanged, filter, flatMap, map, switchMap, tap, toArray } from 'rxjs/operators';
+import { distinctUntilChanged, filter, flatMap, map, switchMap, toArray } from 'rxjs/operators';
 import { ChatUser } from './chat-user';
 
 @Component({
@@ -38,7 +38,6 @@ export class ChatOverviewComponent implements OnInit {
           toArray(),
         )),
       )),
-      tap(console.log), // TODO: remove debug
     );
   }
 }
