@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 import { Message } from '../models/message';
 
 const linkRegEx = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
@@ -9,7 +9,7 @@ const linkRegEx = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:
   styleUrls: ['./chat-message.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatMessageComponent {
+export class ChatMessageComponent implements AfterViewInit{
   @Input() apiEndpoint: string;
   @Input() debug: boolean;
   link: string;
@@ -26,6 +26,9 @@ export class ChatMessageComponent {
     this.extractLink(value.message);
   }
 
+  constructor(private readonly elementRef: ElementRef<HTMLElement>) {
+  }
+
   private extractLink(message: string) {
     this.link = '';
 
@@ -34,5 +37,9 @@ export class ChatMessageComponent {
     if (match) {
       this.link = match[0];
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.scrollIntoView();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, TrackByFunction } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { Message } from '../models/message';
 
 @Component({
@@ -35,7 +35,7 @@ export class ChatWindowComponent {
     });
   }
 
-  trackByTimestamp(): TrackByFunction<Message> {
-    return (index, item) => item.timestamp;
+  trackByTimestamp(index: number, item: Message): number {
+    return item.timestamp;
   }
 }

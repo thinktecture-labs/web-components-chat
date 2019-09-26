@@ -1,1 +1,3 @@
+<button (click)="newMessage()">A new message</button>
+
 <app-chat-window [messages]="sampleMessages" (messageClick)="messageClick($event)" [apiEndpoint]="'http://localhost:8081/api/link-preview'"></app-chat-window>
