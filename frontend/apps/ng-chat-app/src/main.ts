@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import { defineCustomElements } from './assets/web-components/loader'; // https://stenciljs.com/docs/angular
 import { environment } from './environments/environment';
 
-if (environment.production) {
+if (environment.production || environment.ci) {
   enableProdMode();
 }
 
