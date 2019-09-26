@@ -18,6 +18,7 @@ import { SocketServiceRef } from './services/refs/socket.service.ref';
 import { socketServiceInitializerFactory, socketServiceInitializerFactoryDeps } from './services/socket-service.initializer';
 import { WebComponentWrappersModule } from './web-component-wrappers/web-component-wrappers.module';
 import { DebugComponent } from './components/debug/debug.component';
+import { PurgeComponent } from './components/purge/purge.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DebugComponent } from './components/debug/debug.component';
     ChatComponent,
     NoChatSelectedComponent,
     DebugComponent,
+    PurgeComponent,
   ],
   imports: [
     BrowserModule,

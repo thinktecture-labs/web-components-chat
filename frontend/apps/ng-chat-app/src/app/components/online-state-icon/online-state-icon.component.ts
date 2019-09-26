@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class OnlineStateIconComponent implements OnInit {
   state$: Observable<SocketState>;
   stateClass$: Observable<string[]>;
-  faWifi = faWifi;
+  readonly faWifi = faWifi;
 
   constructor(private readonly socketService: SocketService) {
   }

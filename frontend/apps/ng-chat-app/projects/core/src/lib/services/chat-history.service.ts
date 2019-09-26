@@ -23,20 +23,24 @@ export class ChatHistoryService extends Dexie {
   }
 
   loadHistory$(user: string): Observable<Message[]> {
-    return defer(() => from(this.history.filter(message => message.user === user).toArray()));
+    return defer(() => this.history.filter(message => message.user === user).toArray());
   }
 
   addHistory$(user: string, message: Message): Observable<void> {
-    return defer(() => from(this.history.add({ ...message, user })))
+    return defer(() => this.history.add({ ...message, user }))
       .pipe(mapTo(undefined));
   }
 
   allUsers$(): Observable<string[]> {
-    return defer(() => from(this.history.toArray()).pipe(
+    return defer(() => this.history.toArray()).pipe(
       flatMap(users => from(users.sort())),
       map(user => user.user),
       distinctUntilChanged(),
-      toArray()
-    ));
+      toArray(),
+    );
+  }
+
+  purge(): Observable<void> {
+    return defer(() => this.history.clear());
   }
 }

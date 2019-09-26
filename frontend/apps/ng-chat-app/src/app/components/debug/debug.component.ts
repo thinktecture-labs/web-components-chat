@@ -7,7 +7,7 @@ import { faSpider } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./debug.component.scss'],
 })
 export class DebugComponent {
-  faSpider = faSpider;
+  readonly faSpider = faSpider;
   private enabled: boolean;
 
   expose() {
