@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChatService, SecurityService } from '@wc-demo/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ChatHistoryService, ChatService, SecurityService } from '@wc-demo/core';
+import { from, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, flatMap, map, switchMap, tap, toArray } from 'rxjs/operators';
+import { ChatUser } from './chat-user';
 
 @Component({
   selector: 'chat-chat-overview',
@@ -10,11 +11,12 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./chat-overview.component.scss'],
 })
 export class ChatOverviewComponent implements OnInit {
-  users$: Observable<string[]>;
+  users$: Observable<ChatUser[]>;
 
   constructor(
     private readonly router: Router,
     private readonly chatService: ChatService,
+    private readonly chatHistoryService: ChatHistoryService,
     private readonly securityService: SecurityService,
   ) {
   }
@@ -23,15 +25,20 @@ export class ChatOverviewComponent implements OnInit {
     this.router.navigate(['/chat', username]);
   }
 
-  ngOnInit() {
-    this.users$ = this.chatService.users$.pipe(
-      map(users => {
-        const indexToDelete = users.findIndex(p => p === this.securityService.username);
-        if (indexToDelete >= 0) {
-          users.splice(indexToDelete, 1);
-        }
-        return users;
-      }),
+  ngOnInit(): void {
+    this.users$ = this.chatHistoryService.allUsers$().pipe(
+      switchMap(users => this.chatService.onlineUsers$.pipe(
+        flatMap(onlineUsers => from([...users, ...onlineUsers].sort()).pipe(
+          distinctUntilChanged(),
+          filter(user => user !== this.securityService.username),
+          map(user => ({
+            username: user,
+            isOnline: onlineUsers.includes(user),
+          } as ChatUser)),
+          toArray(),
+        )),
+      )),
+      tap(console.log), // TODO: remove debug
     );
   }
 }

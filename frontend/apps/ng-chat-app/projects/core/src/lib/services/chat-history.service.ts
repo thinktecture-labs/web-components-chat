@@ -1,6 +1,6 @@
 import Dexie from 'dexie';
 import { defer, from, Observable } from 'rxjs';
-import { mapTo } from 'rxjs/operators';
+import { distinctUntilChanged, flatMap, map, mapTo, toArray } from 'rxjs/operators';
 import { Message } from '../models/message';
 
 interface MessageEntity extends Message {
@@ -29,5 +29,14 @@ export class ChatHistoryService extends Dexie {
   addHistory$(user: string, message: Message): Observable<void> {
     return defer(() => from(this.history.add({ ...message, user })))
       .pipe(mapTo(undefined));
+  }
+
+  allUsers$(): Observable<string[]> {
+    return defer(() => from(this.history.toArray()).pipe(
+      flatMap(users => from(users.sort())),
+      map(user => user.user),
+      distinctUntilChanged(),
+      toArray()
+    ));
   }
 }

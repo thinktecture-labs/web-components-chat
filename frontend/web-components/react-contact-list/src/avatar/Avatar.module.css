@@ -1,5 +1,22 @@
-.avatar {
+.avatar-container {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: 2px solid #08e375;
-    max-height: 60px;
+    border: 3px solid #fb313b;
+}
+
+.avatar {
+    height: 100%;
+    width: 100%;
+    opacity: 0.75;
+    filter: grayscale(100%);
+}
+
+.is-online {
+    border-color: #08e375;
+}
+
+.is-online .avatar {
+    opacity: 1;
+    filter: none;
 }

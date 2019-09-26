@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChatService, Message } from '@wc-demo/core';
+import { ChatHistoryService, ChatService, Message } from '@wc-demo/core';
 import { from, Observable } from 'rxjs';
-import { map, scan, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, scan, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'chat-chat',
@@ -15,20 +15,22 @@ export class ChatComponent implements OnInit {
 
   constructor(private readonly activatedRoute: ActivatedRoute,
               private readonly router: Router,
+              private readonly chatHistoryService: ChatHistoryService,
               private readonly chatService: ChatService) {
   }
 
   ngOnInit() {
     this.username$ = this.activatedRoute.params.pipe(
       map(params => params.username),
-      withLatestFrom(this.chatService.users$),
-      map(([username, allUsers]: [string, string[]]) => {
-        if (!allUsers.includes(username)) {
-          this.router.navigate(['/chat']);
-        }
+      switchMap(username => this.chatHistoryService.allUsers$().pipe(
+        map(allUsers => {
+          if (!allUsers.includes(username)) {
+            this.router.navigate(['/chat']);
+          }
 
-        return username;
-      }),
+          return username;
+        }),
+      )),
     );
 
     this.chats$ = this.username$.pipe(

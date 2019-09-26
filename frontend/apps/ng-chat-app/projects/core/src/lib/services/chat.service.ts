@@ -25,7 +25,7 @@ export class ChatService {
   userLeave$ = this.userLeaveSubject.asObservable(); // Currently not used by design
 
   private usersSubject = new BehaviorSubject<string[]>([]);
-  users$ = this.usersSubject.asObservable();
+  onlineUsers$: Observable<string[]> = this.usersSubject.asObservable();
 
   private subscription = Subscription.EMPTY;
 
@@ -36,7 +36,7 @@ export class ChatService {
   }
 
   initialize() {
-    const allUsers$: Observable<string[]> = this.socketService.fromEvent('all-users').pipe(
+    const onlineUsers$: Observable<string[]> = this.socketService.fromEvent('all-users').pipe(
       map(({ usernames }: { usernames: string[] }) => {
         const users = [...usernames];
         this.usersSubject.next(users);
@@ -46,7 +46,7 @@ export class ChatService {
 
     const userLeave$ = this.socketService.fromEvent('user-leave').pipe(
       map(({ username }) => username),
-      withLatestFrom(this.users$),
+      withLatestFrom(this.onlineUsers$),
       tap(([username, allUsers]: [string, string[]]) => {
         const users = [...allUsers];
         const indexToDelete = users.findIndex(p => p === username);
@@ -60,7 +60,7 @@ export class ChatService {
 
     const userJoin$ = this.socketService.fromEvent('user-join').pipe(
       map(({ username }) => username),
-      withLatestFrom(this.users$),
+      withLatestFrom(this.onlineUsers$),
       tap(([username, allUsers]: [string, string[]]) => {
         const users = [...allUsers];
         users.push(username);
@@ -82,7 +82,7 @@ export class ChatService {
       ),
     );
 
-    this.subscription = merge(allUsers$, userLeave$, userJoin$, privateMessage$).subscribe();
+    this.subscription = merge(onlineUsers$, userLeave$, userJoin$, privateMessage$).subscribe();
   }
 
   destroy() {

@@ -38,7 +38,7 @@ export class ContactList extends React.Component {
         <header className={styles.header}>{this.props.headerText || 'Contact List'}</header>
 
         <div className={styles.list}>
-          {(this.props.contacts || []).map((item, index) => <ContactItem name={item} key={index}
+          {(this.props.contacts || []).map((item, index) => <ContactItem item={item} key={item.username}
                                                                          onClick={name => this.selectedContactClicked(name)}/>)}
         </div>
       </div>
