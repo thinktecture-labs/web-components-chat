@@ -10,6 +10,8 @@ Additionally, that's currently missing, it shall also demo how to change styling
 
 > Side note: The project is tested and developed with Chrome only. It may work in other browsers, but it has not been tested for functionality and styling.
 
+> Also take note, that this is a lab project, things are suspect to change or may not work as intendend.
+
 ## Frameworks
 
 Currently, the following frameworks are used in this demo application.
@@ -24,7 +26,7 @@ Please have in mind, that the code written may not be best fit in each framework
 
 ## Structure
 
-The structure of the project is as following.
+The structure of the project is as following:
 
 ### `backend`
 
@@ -89,3 +91,12 @@ The command like that will at first build all web components (in fact, you could
 Currently, there is no `watch` job or something to do that automatically.
 Depending on how you work, you would not need it, since the web components are developed within the own sandbox environment and defining an interface (e.g. HTML attributes). 
 If done, then the web components are build and copied.
+
+## Deployment
+
+This project is automatically build via Travis and deployed to two Azure App Services.
+One is hosting the backend and the other one is hosting the frontend.
+The URLs are:
+
+* backend: [https://tt-web-components-chat-ng.azurewebsites.net/](https://tt-web-components-chat-api.azurewebsites.net/)
+* frontend: [https://tt-web-components-chat-ng.azurewebsites.net/](https://tt-web-components-chat-ng.azurewebsites.net/)
