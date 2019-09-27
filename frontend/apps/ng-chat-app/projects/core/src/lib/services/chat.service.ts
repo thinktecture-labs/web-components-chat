@@ -65,7 +65,7 @@ export class ChatService {
         const users = [...allUsers];
         users.push(username);
         this.usersSubject.next(users);
-        this.userLeaveSubject.next(username);
+        this.userJoinSubject.next(username);
       }),
     );
 
