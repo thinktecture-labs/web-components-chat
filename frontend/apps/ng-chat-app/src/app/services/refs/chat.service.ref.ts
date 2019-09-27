@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ChatService, SocketService } from '@wc-demo/core';
-import { ChatHistoryService } from '../../../../projects/core/src/lib/services/chat-history.service';
+import { ChatHistoryService, ChatService, SocketService } from '@wc-demo/core';
 
 @Injectable()
 export class ChatServiceRef extends ChatService implements OnDestroy {
