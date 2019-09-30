@@ -91,6 +91,7 @@ class ChatLink extends LitElement {
     return html`<div>Loading preview...</div>`;
   }
 
+  // Think of emitting an event instead of opening the browser directly, so the user can decide what do to
   clickHandler() {
     if (this.preview.url) {
       window.open(this.preview.url, '_blank');
