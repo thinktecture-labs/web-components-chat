@@ -78,7 +78,7 @@ For the initial setup, you should execute the `npm-i.sh` file.
 It will install all node modules in each project.
 
 Then, go to `frontend` and run `npm run build-wc`.
-After that, go to one of the apps (e.g. `frontend/apps/ng-chat/app`) and execute `npm run wc`.
+After that, go to one of the apps (e.g. `frontend/apps/ng-chat-app`) and execute `npm run wc`.
 This will copy all the web components into the app, so the app can be build later.
 
 ### Workflow
