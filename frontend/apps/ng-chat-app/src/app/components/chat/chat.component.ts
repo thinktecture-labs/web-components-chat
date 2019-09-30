@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatHistoryService, ChatService, Message } from '@wc-demo/core';
-import { forkJoin, from, Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map, scan, switchMap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
