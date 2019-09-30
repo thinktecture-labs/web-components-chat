@@ -11,9 +11,7 @@ export class MessageComposerComponent implements ComponentDidLoad {
   @State() isInvalid: boolean = true;
   @Element() hostElement: HTMLElement;
 
-  private textFieldElement: HTMLInputElement;
-
-  private messageComposedHandler(event: Event = undefined) {
+  private messageComposedHandler() {
     if (this.isInvalid) {
       return;
     }
@@ -21,10 +19,6 @@ export class MessageComposerComponent implements ComponentDidLoad {
     this.messageComposed.emit(this.value);
     this.value = '';
     this.isInvalid = true;
-
-    if (event) {
-      event.preventDefault();
-    }
   }
 
   @Listen('keydown')
@@ -35,12 +29,6 @@ export class MessageComposerComponent implements ComponentDidLoad {
   }
 
   componentDidLoad() {
-    // TODO: Can we use JSX for that?
-    this.textFieldElement.addEventListener('valueChange', (event: CustomEvent) => {
-      this.value = event.detail;
-      this.isInvalid = !this.value;
-    });
-
     let border, margin, padding;
     // Debug
     window.addEventListener('message', event => {
@@ -60,9 +48,14 @@ export class MessageComposerComponent implements ComponentDidLoad {
     });
   }
 
+  textInputChange(value: string) {
+    this.value = value;
+    this.isInvalid = !this.value;
+  }
+
   render() {
     return <form>
-      <native-web-component-text-field value={this.value} ref={e => this.textFieldElement = e}/>
+      <native-web-component-text-field onValueChange={e => this.textInputChange(e.detail)} value={this.value} />
       <native-web-component-button onClick={() => this.messageComposedHandler()} disabled={this.isInvalid}>
         <slot name="button">Send</slot>
       </native-web-component-button>

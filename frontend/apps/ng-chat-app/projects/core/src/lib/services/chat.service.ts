@@ -126,7 +126,7 @@ export class ChatService {
       this.chatHistoryService.loadHistory$(username).pipe(
         tap(messages => {
           if (!messages || !messages.length) {
-            messages = [{ timestamp: Date.now(), isSent: true, message: `New chat with ${username}` }];
+            messages = [{ timestamp: Date.now(), isSent: true, message: `New chat with ${username}` }]; // TODO: translation
           }
 
           messages.forEach(message => subject.next(message));
