@@ -7,6 +7,8 @@
 
 chat-react-contact-list {
   flex: 1;
+  max-height: calc(100vh - 172px);
+  overflow-y: auto;
 }
 
 .chat {
