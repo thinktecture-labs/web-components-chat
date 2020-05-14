@@ -11,7 +11,7 @@
     "start": "cp src/real-index.js src/index.js && react-scripts start",
     "build": "cp src/real-index.js src/index.js && react-scripts build",
     "generate-wc": "cp src/WebComponents.js src/index.js && GENERATE_SOURCEMAP=false react-scripts build src/WebComponents.js",
-    "package-wc": "rm -rf dist && mkdir dist && cat build/static/js/runtime~main.*.js > dist/react-contact-list.js && cat build/static/js/*.chunk.js >> dist/react-contact-list.js && cp build/static/css/main.*.css dist/react-contact-list.css",
+    "package-wc": "rm -rf dist && mkdir dist && cat build/static/js/runtime-main.*.js > dist/react-contact-list.js && cat build/static/js/*.chunk.js >> dist/react-contact-list.js && cp build/static/css/main.*.css dist/react-contact-list.css",
     "build-wc": "npm run generate-wc && npm run package-wc",
     "test": "cp src/real-index.js src/index.js && react-scripts test",
     "eject": "react-scripts eject"
@@ -21,9 +21,10 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 Edge versions"
     ],
     "development": [
       "last 1 chrome version",

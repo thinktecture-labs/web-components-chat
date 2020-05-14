@@ -9,7 +9,7 @@
     "wc:copy": "cp ../../dist/lit-element-chat-link.js src/assets/web-components",
     "build": "ng build",
     "build-wc": "ng build --prod && npm run build-wc:bundle",
-    "build-wc:bundle": "cat dist/angular-chat-window/runtime-es2015.*.js > dist/angular-chat-window.js && cat dist/angular-chat-window/polyfills-es2015.*.js >> dist/angular-chat-window.js && cat dist/angular-chat-window/main-es2015.*.js >> dist/angular-chat-window.js",
+    "build-wc:bundle": "cat dist/angular-chat-window/runtime.*.js > dist/angular-chat-window.js && cat dist/angular-chat-window/polyfills.*.js >> dist/angular-chat-window.js && cat dist/angular-chat-window/main.*.js >> dist/angular-chat-window.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
