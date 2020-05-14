@@ -2,12 +2,14 @@ import Dexie from 'dexie';
 import { defer, from, Observable } from 'rxjs';
 import { distinctUntilChanged, flatMap, map, mapTo, toArray } from 'rxjs/operators';
 import { Message } from '../models/message';
+import { Injectable } from "@angular/core";
 
 interface MessageEntity extends Message {
   id?: number;
   user?: string;
 }
 
+@Injectable()
 export class ChatHistoryService extends Dexie {
   private history: Dexie.Table<MessageEntity, number>;
 
