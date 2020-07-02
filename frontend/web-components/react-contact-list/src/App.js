@@ -7,6 +7,9 @@ function App() {
     { username: 'peter', isOnline: false },
     { username: 'frity', isOnline: true },
     { username: 'frieda', isOnline: false },
+    { username: 'jessy', isOnline: true },
+    { username: 'jenny', isOnline: true },
+    { username: 'sam', isOnline: true },
   ];
 
   return (
