@@ -29,6 +29,10 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'lazy',
+    loadChildren: () => import('./lazy-app.module').then(m => m.LazyAppModule) // mistake
+  },
+  {
     path: 'login',
     component: VueLoginComponent,
   },
